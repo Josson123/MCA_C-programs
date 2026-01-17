@@ -1,26 +1,34 @@
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+#include <conio.h>
+
 void main()
 {
- int pal=1,n,i,j,count=0;
- char a[20],b[20];
- clrscr();
- printf("Enter a string:");
- gets(a);
- for(i=0;a[i]!='\0';i++)
-    {
-         count=count+1;
-    }
- for(i=count;i<0;i--)
-    {
+    char str[50];
+    int i, len = 0, flag = 1;
 
+    clrscr();
+
+    printf("Enter a string: ");
+    gets(str);
+
+    /* Find length of string */
+    while(str[len] != '\0')
+        len++;
+
+    /* Check palindrome */
+    for(i = 0; i < len / 2; i++)
+    {
+        if(str[i] != str[len - i - 1])
         {
-          b[j]=a[i];
+            flag = 0;
+            break;
         }
     }
 
- for(i=0;i<count;i++)
-  printf("%s",b[i]);
- printf("%d",count);
- getch();
+    if(flag == 1)
+        printf("\nThe given string is a Palindrome");
+    else
+        printf("\nThe given string is NOT a Palindrome");
+
+    getch();
 }
